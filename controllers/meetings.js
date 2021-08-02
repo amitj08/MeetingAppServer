@@ -1,14 +1,54 @@
 const mongoose = require( 'mongoose' );
 const Meeting = mongoose.model( 'Meeting' );
 
+
+const getMeetingsByDate = async( req, res, next) => {
+    console.log(req.query);
+    const userId = res.locals.claims.email;       //email
+    var dateToSearch = new Date(req.query.date);       //new Date('2020-09-16');
+    
+    try {
+        const filter = { date: { }, attendees: { } };
+        filter.attendees = userId;
+        
+        const today = new Date();
+        const tomorrow = new Date();
+        tomorrow.setDate( today.getDate() + 1 );
+        console.log(today+" "+tomorrow);
+        const nextDate = new Date();
+        nextDate.setDate( dateToSearch.getDate() + 1);
+        console.log(nextDate);
+
+        filter.date = { $gte: dateToSearch , $lte: nextDate };
+        //filter.date = { $eq: dateToSearch };
+        
+        console.log(filter);
+        const meetings = await Meeting.find( filter ).sort( { date: -1 } );
+        console.log(meetings);
+        res.status( 201 ).json({
+            message: 'success',
+            data: meetings
+        });
+        
+    } catch ( error ) {
+        if( error instanceof mongoose.Error ) {
+            error.status = 400;
+            error.message = 'Required fields are missing with proper format';
+        } else {
+            error.status = 500;
+            error.message = 'Server Side Error';
+        }
+        next( error );
+    }
+};
+
+
 const getMeetingsByFilters = async( req, res, next) => {
     console.log(req.query);
     const userId = res.locals.claims.email;       //email
-    const dateToSearch = new Date(req.query.date);       //new Date('2020-09-16');
     const search = req.query.search;
     const period = req.query.period;
     //console.log("userId ="+userId );
-    //console.log("date = "+dateToSearch);
     //console.log("search = "+search);
     //console.log("period = "+period);
 
@@ -24,12 +64,12 @@ const getMeetingsByFilters = async( req, res, next) => {
             delete filter.description;
         }
     
-        const today = new Date( new Date().toISOString().substring( 0, 10 ) );
+        const today = new Date();
         const tomorrow = new Date();
         tomorrow.setDate( today.getDate() + 1 );
-        const nextDate = new Date();
-        nextDate.setDate(dateToSearch.getDate() + 1);
-
+        console.log(today+" "+tomorrow);
+       
+        console.log("Test");
         switch( period ) {
             case 'PAST': 
                 filter.date = { $lt: today };
@@ -43,11 +83,8 @@ const getMeetingsByFilters = async( req, res, next) => {
             default:
                 delete filter.date;
         }
-        if( dateToSearch ) {
-            filter.date = { $gte: dateToSearch , $lte: nextDate };
-        }
         
-        //console.log(filter);
+        console.log(filter);
         const meetings = await Meeting.find( filter ).sort( { date: -1 } );
         console.log(meetings);
         res.status( 201 ).json({
@@ -138,6 +175,7 @@ const leaveMeetingById = async ( req, res, next ) => {
 
 
 module.exports = {
+    getMeetingsByDate,
     getMeetingsByFilters,
     postMeeting,
     leaveMeetingById,

@@ -14,7 +14,7 @@ const { logger } = require( './middleware/logger' );
 
 const pagesRouter = require( './routes/pages' );
 const authRouter = require( './routes/auth' );
-
+const calendarRouter= require( './routes/calendar');
 const usersRouter = require( './routes/users');
 const meetingsRouter = require( './routes/meetings' );
 const teamsRouter = require( './routes/teams' );
@@ -36,6 +36,7 @@ app.use( express.json() );
 app.use( '/', pagesRouter );
 app.use( '/api/auth', authRouter );
 app.use( '/api/users', usersRouter );
+app.use( '/api/calendar', calendarRouter );
 app.use( '/api/meetings', meetingsRouter );
 app.use( '/api/teams', teamsRouter );
 app.use( pageNotFoundHandler );
