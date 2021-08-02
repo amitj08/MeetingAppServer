@@ -1,0 +1,22 @@
+[
+{
+    "name": "Sports Day",
+    "shortName": "cricket",
+    "description": "Team organising cricket matches for Sports Day",
+    "members":[ "john.doe@example.com", "jane.doe@example.com","david.paul@gmail.com" ]
+},
+
+{
+    "name": "Annual Day",
+    "shortName": "fun",
+    "description": "Team organising fun events for Annual Day",
+    "members":[ "john.doe@example.com", "jane.doe@example.com" ]
+},
+
+{
+    "name": "New Joinee 2021",
+    "shortName": "new",
+    "description": "New Joinee of 2021",
+    "members":[ "paul.smith@example.com", "jane.doe@example.com" ]
+}
+]

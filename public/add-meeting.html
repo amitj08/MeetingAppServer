@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+    <script defer src="add-meeting.bundle.js"></script></head>
+    <body>
+        <!-- b4-navbar-minimal-ul -->
+        <nav class="navbar navbar-expand navbar-light bg-light">
+            <div class="container">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            Home 
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/calendar">
+                            Calendar <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search-meeting">
+                            Meeting
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/teams">
+                            Teams
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logout-link">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="container my-3">
+            <section class="container my-3">
+                <h1 class="pb-3 mb-3 border-bottom">Meetings</h1>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search-meeting">Filter / Search Meetings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/add-meeting">Add a Meeting</a>
+                    </li>
+                </ul>
+            </section>
+
+            <section>  
+                <form class="bg-info p-3 mt-2 rounded">
+                    <h2 class="pb-3 mb-1 mt-3 text-white border-bottom">Add a new meeting</h2>
+                    <form action="https://mymeetingsapp.herokuapp.com/api/meetings" method="get" id="add-meeting-form">
+                        <div class="form-group mb-3">
+                            <label for="search-date">Date</label>
+                            <input type="date" class="form-control" id="cal-datepicker"  value= "" /> 
+                        </div>
+                        
+                        <div class="form-group mb-3 ">
+                            <label class="mb-1" for="formGroupStartTime">Start Time </label>
+                            <input class="form-control" type="time" name="meeting-start-time" id="create-meeting-end-time">
+                        </div>
+
+                        <div class="form-group mb-3 ">
+                            <label class="mb-1" for="formGroupEndTime">End Time </label>
+                            <input class="form-control" type="time" name="meeting-end-time" id="create-meeting-end-time">
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="search-keywords" >Description</label>
+                            <textarea class="form-control" name="search-keywords" id="description" placeholder="Search using keywords which describe the meeting" value=""></textarea>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="search-keywords" >Email IDs of attendees, or team's short</label>
+                            <textarea class="form-control" name="search-k" id="emailid_or_team_short" placeholder="Search using keywords which describe the meeting" value=""></textarea>
+                        </div>
+                        
+                        <button type="submit"  class="btn-primary" id="search-btn">Add Meeting</button>
+                    </form>
+                </form>
+
+            </section>
+
+
+    </body>
+</html>

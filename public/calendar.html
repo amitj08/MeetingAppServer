@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <!-- Bootstrap CSS 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        -->
+    <script defer src="calendar.bundle.js"></script></head>
+    <body>
+        <!-- b4-navbar-minimal-ul -->
+        <nav class="navbar navbar-expand navbar-light bg-light">
+            <div class="container">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">
+                            Home 
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/calendar">
+                            Calendar <span class="visually-hidden">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search-meeting">
+                            Meeting
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/teams">
+                            Teams
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logout-link">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--
+        <main id="main-content2">
+            <section class="container my-4">
+                <div class="card bg-light p-5">
+                    <h1>Meeting App</h1>
+                    <p>
+                        The Workshops application serves details of (fictitious) technical workshops happening in various cities. Every workshop has a broad topic (eg. JavaScript), and a workshop has many sessions (each session covers a sub-topic, eg. Closures in JavaScript).
+                    </p>
+                    <p>
+                        You can view a list of workshops, details of every workshop, sessions in a workshop, and also add a new session for a workshop.
+                    </p>
+                </div>
+            </section>
+        </main>
+        -->
+        <main id="main-content1" >
+            <div class="container my-3 ">
+                <h1 class="margin-top-2 margin-bottom-1 hr">Calendar</h1>
+                
+                <div class="d-flex justify-content-space-between margin-top-1">
+                    <div>
+                        <h2 id="cal-date-text"></h2>
+                    </div>
+                    <div >
+                        <form method="post" action="https://mymeetingsapp.herokuapp.com/api/calendar">
+                        <label for="cal-datepicker" class="sr-only">Select Date to check meetings on that day</label>
+                        <input type="date" class="cal-datepicker" id="cal-datepicker"  value= "" />
+                        </form>
+                    </div>
+                </div>
+                <hr />
+                <div>
+                    <div class="day-name" id="day-name"></div>
+                </div>
+
+            </div>
+
+            <div class="calendar-with-meetings" style="position: relative;">
+
+                <!--Calendar Start-->
+                <div class="container my-3" id="calendar_div">
+        
+                    <div class="d-flex mb-2">
+                        <div>0</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>1</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>2</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>3</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>4</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>5</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>6</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>7</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>8</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>9</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>10</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>11</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>12</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>13</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>14</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>15</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>16</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>17</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>18</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>19</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>20</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>21</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>22</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+
+                    <div class="d-flex mb-2">
+                        <div>23</div>
+                        <div class="p-2 flex-grow-1 bg-info"></div>
+                    </div>
+                    
+                </div>
+                    
+                <!--Calendar End-->  
+                
+                <!-- Calendar meetings -->
+                <div class="meetings">
+                    <div id="meeting-1" style="position: absolute; top: 40px; left: 100px; right: 80px; height: 100px; background-color: rgba( 160, 0, 0, 0.5 );">hello hi</div>
+                </div>
+            </div>
+
+        </main>
+
+    </body>
+</html>

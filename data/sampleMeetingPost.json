@@ -1,0 +1,12 @@
+{
+     "name": "Post-training party 2",
+        "description": "Cheers! Online party to celebrate successful completion of training.",
+        "date": 
+             "2020-09-19T00:00:00.000Z",
+        "startTime": { "hours": 23, "minutes": 0 },
+        "endTime": { "hours": 23, "minutes": 30 },
+        "attendees": [
+             "aravind@telstra.com",
+             "asmita@telstra.com"
+        ]
+}
