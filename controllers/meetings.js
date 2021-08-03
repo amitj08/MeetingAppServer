@@ -15,11 +15,11 @@ const getMeetingsByDate = async( req, res, next) => {
         const tomorrow = new Date();
         tomorrow.setDate( today.getDate() + 1 );
         console.log(today+" "+tomorrow);
-        const nextDate = new Date();
+        const nextDate = new Date(dateToSearch);
         nextDate.setDate( dateToSearch.getDate() + 1);
         console.log(nextDate);
 
-        filter.date = { $gte: dateToSearch , $lte: nextDate };
+        filter.date = { $gte: dateToSearch , $lt: nextDate };
         //filter.date = { $eq: dateToSearch };
         
         console.log(filter);
@@ -71,13 +71,13 @@ const getMeetingsByFilters = async( req, res, next) => {
        
         console.log("Test");
         switch( period ) {
-            case 'PAST': 
+            case 'past': 
                 filter.date = { $lt: today };
                 break;
-            case 'TODAY':
-                filter.date = { $gte: today, $lte: tomorrow };
+            case 'today':
+                filter.date = { $gte: today, $lt: tomorrow };
                 break;
-            case 'UPCOMING':
+            case 'upcoming':
                 filter.date = { $gt: today };
                 break;
             default:
@@ -108,6 +108,7 @@ const postMeeting = async ( req, res, next ) => {
     console.log("sss");
     const meeting = req.body;
     self_user= res.locals.claims.email;
+    //meeting.date= new Date(meeting.date); 
     meeting.attendees.push(self_user);
     //console.log(self_user);
 
