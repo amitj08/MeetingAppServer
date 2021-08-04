@@ -6,7 +6,7 @@ const register = async ( req, res, next ) => {
     const user = req.body;
 
     if( !user ) {
-        const error = new Error( 'You have sent your data' );
+        const error = new Error( 'You have not sent your data' );
         error.status = 400;
         return next( error );
     }
