@@ -23,7 +23,7 @@ const getMeetingsByDate = async( req, res, next) => {
         //filter.date = { $eq: dateToSearch };
         
         console.log(filter);
-        const meetings = await Meeting.find( filter ).sort( { date: -1 } );
+        const meetings = await Meeting.find( filter ).sort( { startTime: 1 } );
         console.log(meetings);
         res.status( 201 ).json({
             message: 'success',
