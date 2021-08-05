@@ -12,7 +12,7 @@ const { logSuccess, logError } = require( './utils/logger' );
 const { pageNotFoundHandler, errorHandler } = require( './middleware/error' );
 const { logger } = require( './middleware/logger' );
 
-const pagesRouter = require( './routes/pages' );
+//const pagesRouter = require( './routes/pages' );
 const authRouter = require( './routes/auth' );
 const calendarRouter= require( './routes/calendar');
 const usersRouter = require( './routes/users');
@@ -33,7 +33,7 @@ app.use( express.static( path.join( process.cwd(), 'public' ) ) );
 app.use( express.urlencoded( { extended: false } ) );   //reading data from form data in url like &id=9 etc
 app.use( express.json() );
 
-app.use( '/', pagesRouter );
+//app.use( '/', pagesRouter );
 app.use( '/api/auth', authRouter );
 app.use( '/api/users', usersRouter );
 app.use( '/api/calendar', calendarRouter );

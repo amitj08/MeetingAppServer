@@ -42,7 +42,7 @@ const login = async ( req, res, next ) => {
         // check match of password
         matchedUser.checkPassword( password, ( err, isMatch ) => {
             if( err || !isMatch ) {
-                const error = err || new Error( 'credentials do not match' );
+                const error = err || new Error( 'Credentials do not match' );
                 error.status = 401;
                 return next( error );
             }

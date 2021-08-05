@@ -7,9 +7,6 @@ const getTeamsByUserId = async ( req, res, next ) => {
 
     try {
         //const filter = { members: { $elemMatch: { userId } } };
-        
-        //const teams = await Team
-         //   .find( filter );
 
         const rs= await Team.find({ members: userId });  
         console.log(rs);

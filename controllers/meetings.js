@@ -126,6 +126,13 @@ const postMeeting = async ( req, res, next ) => {
             data: updatedMeeting
         });
     } catch( error ) {
+        if( error instanceof mongoose.Error ) {
+            error.status = 400;
+            error.message = 'Required fields are missing with proper format';
+        } else {
+            error.status = 500;
+            error.message = 'Server Side Error';
+        }
         return next( error );
     }
 };
